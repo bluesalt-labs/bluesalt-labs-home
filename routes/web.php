@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware('auth')->prefix('static')->group(function() {
+    Route::get('/', 'StaticController@index')->name('static.index');
+    Route::get('{pagePath}', 'StaticController@get')->where('page', '.*')->name('static.get');
+});
