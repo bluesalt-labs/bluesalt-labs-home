@@ -19,8 +19,8 @@ class CreateNotesTable extends Migration
             $table->softDeletes();
             $table->integer('user_id');
             $table->string('title');
-            $table->text('content');
-            $table->json('json_data');
+            $table->text('content')->nullable();
+            $table->json('json_data')->nullable();
         });
     }
 

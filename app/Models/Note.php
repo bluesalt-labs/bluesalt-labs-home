@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Note extends Model
+class Note extends BaseModel
 {
-    //
+    protected $fillable = ['user_id', 'title', 'content', 'json_data'];
 }
