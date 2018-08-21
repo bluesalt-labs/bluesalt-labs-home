@@ -21,3 +21,13 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+// Star Ratings
+$star-close: "\f005"; // fa-star
+$star-open:  "\f006"; // fa-star-o
+$star-half:  "\f123"; // fa-star-half-o
+$star-font-size: 40px;
+$star-spacing: 5px;
+$star-color-inactive: #888;
+$star-color-active: #2373CC;
+$star-color-hover: #6EA3DF;

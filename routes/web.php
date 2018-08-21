@@ -23,3 +23,8 @@ Route::middleware('auth')->prefix('static')->group(function() {
     Route::get('/', 'StaticController@index')->name('static.index');
     Route::get('{pagePath}', 'StaticController@get')->where('page', '.*')->name('static.get');
 });
+
+// Temp Routes
+Route::middleware('auth')->group(function() {
+    Route::resource('data-items', 'DataItemsController');
+});
