@@ -10,6 +10,9 @@ $line-height-base: 1.6;
 // Font Awesome
 @import '~font-awesome/scss/font-awesome';
 
+// Highlight.js
+@import "~highlightjs/styles/androidstudio.css";
+
 // Colors
 $blue: #3490dc;
 $indigo: #6574cd;

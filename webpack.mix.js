@@ -11,6 +11,12 @@ let mix = require('laravel-mix');
  |
  */
 
+// Compile application assets
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
+
+// Copy Sidebar Links Library
 mix.copy('node_modules/sidebar-links/dist/sidebar-links.min.js', 'public/js');
+
+// Copy Chart.js Library
+mix.copy('node_modules/chart.js/dist/Chart.min.js', 'public/js');

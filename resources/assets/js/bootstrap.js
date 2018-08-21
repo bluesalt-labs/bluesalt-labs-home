@@ -1,6 +1,8 @@
 
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
+window.moment = require('moment');
+window.hljs = require('highlightjs');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
