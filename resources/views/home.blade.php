@@ -15,6 +15,9 @@
                     @endif
 
                     You are logged in!
+                    <hr />
+                    <h2>Temporary</h2>
+                    <a href="{{ route('data-items.create') }}">Create Data Items</a>
                 </div>
             </div>
         </div>

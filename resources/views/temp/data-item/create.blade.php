@@ -12,7 +12,7 @@
                     <input type="hidden" name="type_id" value="0" />
 
                     <span>Rating</span>
-                    <div class="form-group">
+                    <div>
                         <div class="star-container">
                             <input type="radio" id="radio-star-5" name="json_data[rating]" class="star-radio" value="5" />
                             <label for="radio-star-5" class="star-label"></label>
@@ -33,12 +33,23 @@
                 </form>
                 <hr />
 
-                <ul>
+                <ul style="list-style:none;">
                     @foreach(auth()->user()->dataItems as $dataItem)
                     <li>
-                        <span>{{ $dataItem->json_data['rating'] }}</span>
-                        <span> - </span>
-                        <span>{{ \Carbon\Carbon::parse($dataItem->created_at) }}</span>
+                        <div class="star-container">
+                            @for($i = 5; $i > 0; $i--)
+                            <input
+                                type="radio"
+                                id="radio-star-{{ $dataItem->id }}-{{ $i }}"
+                                name="rating-{{ $dataItem->id }}"
+                                class="star-radio" value="{{ $i }}"
+                                {{ intval($dataItem->json_data['rating']) === $i ? 'checked' : '' }}
+                                disabled
+                            />
+                            <label for="radio-star-{{ $dataItem->id }}-{{ $i }}" class="star-label"></label>
+                            @endfor
+                        </div>
+                        <span style="line-height:40px;">{{ \Carbon\Carbon::parse($dataItem->created_at)->toDayDateTimeString() }}</span>
                         <form method="post" action="/data-items/{{ $dataItem->id }}" style="display:inline-block;">
                             <input name="_method" type="hidden" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

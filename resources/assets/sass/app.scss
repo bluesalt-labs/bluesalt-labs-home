@@ -13,16 +13,17 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-
-.star-container,
-.star-container .star-label,
-.star-container .star-radio { cursor: pointer; }
-
 .star-container {
   height: $star-font-size;
   font-size: 0;
   float:left;
+  position: relative;
+  top: -0.8rem;
 }
+
+.star-container,
+.star-container .star-radio:not(:disabled) ~ .star-label,
+.star-container .star-radio:not(:disabled) { cursor: pointer; }
 
 .star-container .star-label { float: right; }
 
@@ -52,7 +53,7 @@
 .star-container .star-radio:checked ~ .star-label { color: $star-color-active; }
 .star-container .star-radio:checked ~ .star-label:before { content: $star-close; }
 
-.star-container .star-radio:not(:checked) ~ .star-label:hover,
-.star-container .star-radio:not(:checked) ~ .star-label:hover ~ .star-label { color: $star-color-hover; }
-.star-container .star-radio:not(:checked) ~ .star-label:hover ~ .star-label:before,
-.star-container .star-radio:not(:checked) ~ .star-label:hover:before { content: $star-close; }
+.star-container .star-radio:not(:checked):not(:disabled) ~ .star-label:hover,
+.star-container .star-radio:not(:checked):not(:disabled) ~ .star-label:hover ~ .star-label { color: $star-color-hover; }
+.star-container .star-radio:not(:checked):not(:disabled) ~ .star-label:hover ~ .star-label:before,
+.star-container .star-radio:not(:checked):not(:disabled) ~ .star-label:hover:before { content: $star-close; }
