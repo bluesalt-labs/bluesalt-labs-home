@@ -16,6 +16,9 @@ class CreateDataItemTypesTable extends Migration
         Schema::create('data_item_types', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->softDeletes();
+            $table->string('name');
+            $table->json('json_data')->nullable();
         });
     }
 

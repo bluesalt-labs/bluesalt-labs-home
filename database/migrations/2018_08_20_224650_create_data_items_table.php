@@ -18,6 +18,8 @@ class CreateDataItemsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->integer('type_id');
+            $table->integer('user_id');
+            $table->integer('collection_id')->nullable();
             $table->json('json_data')->nullable();
         });
     }

@@ -16,6 +16,9 @@ class CreateDataItemCollectionsTable extends Migration
         Schema::create('data_item_collections', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->softDeletes();
+            $table->integer('user_id');;
+            $table->json('json_data')->nullable();
         });
     }
 
