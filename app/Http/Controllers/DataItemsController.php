@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class DataItemsController extends Controller
 {
     public function index() {
-
+        return redirect()->route('data-items.create');
     }
 
     public function create() {
@@ -30,15 +30,15 @@ class DataItemsController extends Controller
     }
 
     public function show($id) {
-
+        return redirect()->route('data-items.create');
     }
 
     public function edit($id) {
-
+        return redirect()->route('data-items.create');
     }
 
     public function update(Request $request, $id) {
-
+        return redirect()->route('data-items.create');
     }
 
     public function destroy($id) {

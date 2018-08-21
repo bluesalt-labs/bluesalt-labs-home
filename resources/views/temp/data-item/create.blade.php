@@ -1,41 +1,64 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">Create Data Item</div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-lg-8">
+            <div class="card">
+                <div class="card-header">Add New</div>
 
-            <div class="card-body">
-                <form method="post" action="{{ route('data-items.store') }}">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                    <input type="hidden" name="type_id" value="0" />
+                <div class="card-body">
+                    <form method="post" action="{{ route('data-items.store') }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <input type="hidden" name="type_id" value="0" />
 
-                    <span>Rating</span>
-                    <div>
-                        <div class="star-container">
-                            <input type="radio" id="radio-star-5" name="json_data[rating]" class="star-radio" value="5" />
-                            <label for="radio-star-5" class="star-label"></label>
-                            <input type="radio" id="radio-star-4" name="json_data[rating]" class="star-radio" value="4" />
-                            <label for="radio-star-4" class="star-label"></label>
-                            <input type="radio" id="radio-star-3" name="json_data[rating]" class="star-radio" value="3" />
-                            <label for="radio-star-3" class="star-label"></label>
-                            <input type="radio" id="radio-star-2" name="json_data[rating]" class="star-radio" value="2" />
-                            <label for="radio-star-2" class="star-label"></label>
-                            <input type="radio" id="radio-star-1" name="json_data[rating]" class="star-radio" value="1" />
-                            <label for="radio-star-1" class="star-label"></label>
+                        <span>Rating</span>
+                        <div>
+                            <div class="star-container">
+                                <input type="radio" id="radio-star-5" name="json_data[rating]" class="star-radio" value="5" />
+                                <label for="radio-star-5" class="star-label"></label>
+                                <input type="radio" id="radio-star-4" name="json_data[rating]" class="star-radio" value="4" />
+                                <label for="radio-star-4" class="star-label"></label>
+                                <input type="radio" id="radio-star-3" name="json_data[rating]" class="star-radio" value="3" />
+                                <label for="radio-star-3" class="star-label"></label>
+                                <input type="radio" id="radio-star-2" name="json_data[rating]" class="star-radio" value="2" />
+                                <label for="radio-star-2" class="star-label"></label>
+                                <input type="radio" id="radio-star-1" name="json_data[rating]" class="star-radio" value="1" />
+                                <label for="radio-star-1" class="star-label"></label>
+                            </div>
                         </div>
-                    </div>
 
-                    <button type="submit" class="btn btn-outline-success">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </form>
-                <hr />
+                        <button type="submit" class="btn btn-outline-success">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-                <ul style="list-style:none;">
+        <div class="col-xs-12 col-lg-8">
+            <hr />
+        </div>
+
+        <div class="col-xs-12 col-lg-8">
+            <div class="card">
+                <div class="card-header">Chart</div>
+                <div class="card-body">
+                    <canvas id="chart-container"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-lg-8">
+            <hr />
+        </div>
+
+        <div class="col-xs-12 col-lg-8">
+            <div class="card">
+                <div class="card-header">List</div>
+                <div class="card-body">
                     @foreach(auth()->user()->dataItems as $dataItem)
-                    <li>
+                    <div>
                         <div class="star-container">
                             @for($i = 5; $i > 0; $i--)
                             <input
@@ -49,6 +72,8 @@
                             <label for="radio-star-{{ $dataItem->id }}-{{ $i }}" class="star-label"></label>
                             @endfor
                         </div>
+                        <br class="d-sm-none" />
+                        <br class="d-sm-none" />
                         <span style="line-height:40px;">{{ \Carbon\Carbon::parse($dataItem->created_at)->toDayDateTimeString() }}</span>
                         <form method="post" action="/data-items/{{ $dataItem->id }}" style="display:inline-block;">
                             <input name="_method" type="hidden" value="DELETE">
@@ -57,18 +82,81 @@
                                 <i class="fa fa-times"></i>
                             </button>
                         </form>
-                    </li>
+                        <hr class="d-sm-none" />
+                    </div>
                     @endforeach
-                </ul>
-
+                </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
 
-        {{--
-    @foreach(auth()->user()->dataItems as $dataItem)
-    <div></div>
-    @endforeach
-    --}}
+@section('page-script')
+    <script src="{{ asset('js/Chart.min.js') }}"></script>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            var ctx = document.getElementById('chart-container').getContext('2d');
+
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: getChartData(),
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                max: 5,
+                                min: 0,
+                                stepSize: 1
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+
+        function getChartData() {
+            var dateFormat = "YYYY-MM-DD HH:mm:ss";
+            var dataItems = {!! auth()->user()->dataItems !!};
+            //var thisYear = (new Date()).getFullYear();
+
+            var chartData = {
+                labels: [],
+                datasets: [{
+                    label: "Ratings",
+                    data: [],
+                    backgroundColor: "rgba(35, 115, 204, 0.75)"
+                }]
+            };
+
+            var data = {};
+
+            _.forEach(dataItems, function(item) {
+                console.log(item); // debug
+
+                var date = moment(item['created_at'], dateFormat);
+                var rating = parseInt( item['json_data']['rating'] );
+                var label = date.format('MMM Do');
+
+                //if( chartData.labels.indexOf(label) !== -1 ) {
+                if( data.hasOwnProperty(label) ) {
+                    data[label] = average(data[label], rating);
+                } else {
+                    data[label] = rating;
+                }
+            });
+
+            console.log(data); // debug
+
+            _.forEach(data, function(rating, date) {
+                chartData.labels.push(date);
+                chartData.datasets[0].data.push( rating );
+            });
+
+            return chartData;
+        }
+
+        function average(v1, v2) { return (v1 + v2) / 2; }
+    </script>
 @endsection

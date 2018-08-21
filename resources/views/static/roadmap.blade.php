@@ -60,13 +60,14 @@
         </div>
     </div>
 </div>
+@endsection
 
+@section('page-script')
 <script src="{{ asset('js/sidebar-links.min.js') }}"></script>
+
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function() {
         sidebarLinks();
     });
 </script>
-
-
 @endsection
