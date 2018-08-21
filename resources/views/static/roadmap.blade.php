@@ -55,6 +55,7 @@
                 </li>
                 <li>Figure out a way for individual users to customize their dashboard.</li>
                 <li>Create data item type seeds (i.e. built-in default types).</li>
+                <li>Get Mailgun working, set up test welcome email.</li>
             </ul>
         </div>
     </div>
