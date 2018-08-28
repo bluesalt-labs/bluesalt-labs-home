@@ -126,28 +126,24 @@
                 datasets: [{
                     label: "Ratings",
                     data: [],
-                    backgroundColor: "rgba(35, 115, 204, 0.75)"
+                    borderColor: "rgba(35, 115, 204, 1)",
+                    backgroundColor: "rgba(35, 115, 204, 0.2)"
                 }]
             };
 
             var data = {};
 
             _.forEach(dataItems, function(item) {
-                console.log(item); // debug
-
                 var date = moment(item['created_at'], dateFormat);
                 var rating = parseInt( item['json_data']['rating'] );
                 var label = date.format('MMM Do');
 
-                //if( chartData.labels.indexOf(label) !== -1 ) {
                 if( data.hasOwnProperty(label) ) {
                     data[label] = average(data[label], rating);
                 } else {
                     data[label] = rating;
                 }
             });
-
-            console.log(data); // debug
 
             _.forEach(data, function(rating, date) {
                 chartData.labels.push(date);
