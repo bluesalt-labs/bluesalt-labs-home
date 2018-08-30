@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::middleware('auth')->prefix('static')->group(function() {
     Route::get('/', 'StaticController@index')->name('static.index');
@@ -27,4 +27,8 @@ Route::middleware('auth')->prefix('static')->group(function() {
 // Temp Routes
 Route::middleware('auth')->group(function() {
     Route::resource('data-items', 'DataItemsController');
+
+    Route::get('notes', 'VueRouterController@notes')->name('notes');
+    Route::get('tasks', 'VueRouterController@tasks')->name('tasks');
+    Route::get('data', 'VueRouterController@dataItems')->name('data-items');
 });
