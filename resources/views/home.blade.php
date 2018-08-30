@@ -17,7 +17,18 @@
                     You are logged in!
                     <hr />
                     <h2>Temporary</h2>
-                    <a href="{{ route('data-items.create') }}">Create Data Items</a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('static.index') }}">Static Pages</a>
+                            <ul>
+                                <li><a href="{{ route('static.get', ['pagePath' => 'roadmap']) }}">Roadmap</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="{{ route('data-items.create') }}">Create Data Items</a></li>
+                    </ul>
+
+
                 </div>
             </div>
         </div>
