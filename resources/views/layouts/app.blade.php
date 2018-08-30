@@ -74,10 +74,10 @@
         </nav>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-2">
+                <div class="col-md-2">
                     @include('layouts.nav')
                 </div>
-                <div class="col-10 py-4">
+                <div class="col-md-10 py-4">
                     @yield('content')
                 </div>
             </div>

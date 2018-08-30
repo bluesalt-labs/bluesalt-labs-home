@@ -1,4 +1,4 @@
-<ul id="left-nav" class="nav flex-column nav-pills">
+<ul id="left-nav" class="nav flex-md-column flex-sm-row nav-pills">
     <li class="nav-item">
         <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
     </li>
