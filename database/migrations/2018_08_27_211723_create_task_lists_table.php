@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDataItemCollectionsTable extends Migration
+class CreateTaskListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateDataItemCollectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('data_item_collections', function (Blueprint $table) {
+        Schema::create('task_lists', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->softDeletes();
-            $table->integer('user_id');;
-            $table->json('json_data')->nullable();
         });
     }
 
@@ -29,6 +26,6 @@ class CreateDataItemCollectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_item_collections');
+        Schema::dropIfExists('task_lists');
     }
 }
