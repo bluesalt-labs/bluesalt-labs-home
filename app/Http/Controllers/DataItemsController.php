@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataItem;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class DataItemsController extends Controller
 {
@@ -16,12 +14,12 @@ class DataItemsController extends Controller
         return view('temp.data-item.create');
     }
 
-    public function store(Request $request) {
-        $user = Auth::user();
+    public function store() {
+        $user = auth()->user();
         $dataItem = new DataItem([
             'user_id'   => intval($user->id),
-            'type_id'   => intval($request->type_id),
-            'json_data' => $request->json_data,
+            'type_id'   => intval(request()->type_id),
+            'json_data' => request()->json_data,
         ]);
 
         $dataItem->save();
@@ -42,7 +40,7 @@ class DataItemsController extends Controller
     }
 
     public function destroy($id) {
-        $user = Auth::user();
+        $user = auth()->user();
         $dataItem = DataItem::findOrFail($id);
 
         if(intval($dataItem->user_id) === intval($user->id)) {
