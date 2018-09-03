@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <form method="post" action="{{ route('data-items.store') }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        <input type="hidden" name="type_id" value="0" />
+                        <input type="hidden" name="type_id" value="{{ $dataItemType->id }}" />
 
                         <span>Rating</span>
                         <div>
@@ -57,7 +57,8 @@
             <div class="card">
                 <div class="card-header">List</div>
                 <div class="card-body">
-                    @foreach(auth()->user()->dataItems as $dataItem)
+                    @if($dataItems)
+                    @foreach($dataItems as $dataItem)
                     <div>
                         <div class="star-container">
                             @for($i = 5; $i > 0; $i--)
@@ -85,6 +86,7 @@
                         <hr class="d-sm-none" />
                     </div>
                     @endforeach
+                    @endif
                 </div>
             </div>
         </div>
@@ -118,7 +120,7 @@
 
         function getChartData() {
             var dateFormat = "YYYY-MM-DD HH:mm:ss";
-            var dataItems = {!! auth()->user()->dataItems !!};
+            var dataItems = {!! $dataItems !!};
             //var thisYear = (new Date()).getFullYear();
 
             var chartData = {
@@ -133,22 +135,24 @@
 
             var data = {};
 
-            _.forEach(dataItems, function(item) {
-                var date = moment(item['created_at'], dateFormat);
-                var rating = parseInt( item['json_data']['rating'] );
-                var label = date.format('MMM Do');
+            if (dataItems) {
+                _.forEach(dataItems, function (item) {
+                    var date = moment(item['created_at'], dateFormat);
+                    var rating = parseInt(item['json_data']['rating']);
+                    var label = date.format('MMM Do');
 
-                if( data.hasOwnProperty(label) ) {
-                    data[label] = average(data[label], rating);
-                } else {
-                    data[label] = rating;
-                }
-            });
+                    if (data.hasOwnProperty(label)) {
+                        data[label] = average(data[label], rating);
+                    } else {
+                        data[label] = rating;
+                    }
+                });
 
-            _.forEach(data, function(rating, date) {
-                chartData.labels.push(date);
-                chartData.datasets[0].data.push( rating );
-            });
+                _.forEach(data, function (rating, date) {
+                    chartData.labels.push(date);
+                    chartData.datasets[0].data.push(rating);
+                });
+            }
 
             return chartData;
         }

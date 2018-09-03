@@ -23,4 +23,8 @@ class DashboardController extends Controller
     {
         return view('dashboard');
     }
+
+    public function index_new() {
+        return view('dashboard-new');
+    }
 }

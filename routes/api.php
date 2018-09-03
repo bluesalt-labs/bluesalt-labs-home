@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->namespace('Api')->group(function() {
+Route::middleware('auth:api')->as('api.')->namespace('Api')->group(function() {
     Route::apiResource('data-items', 'DataItemsController');
     Route::apiResource('data-item-types', 'DataItemTypesController');
     Route::apiResource('data-item-lists', 'DataItemListsController');

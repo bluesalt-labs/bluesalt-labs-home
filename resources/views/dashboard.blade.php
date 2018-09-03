@@ -27,7 +27,16 @@
                             </ul>
                         </li>
 
-                        <li><a href="{{ route('data-items.create') }}">Create Data Items</a></li>
+                        <li>
+                            <a href="{{ route('data-items.{type}.create', ['type' => 'star-rating']) }}">
+                                Create Star Rating Data Items
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('data-items.{type}.create', ['type' => 'time-journal-entry']) }}">
+                                Create Time Journal Entry Items
+                            </a>
+                        </li>
                     </ul>
 
 
