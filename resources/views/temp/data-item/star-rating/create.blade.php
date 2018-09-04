@@ -77,7 +77,7 @@
                         <br class="d-sm-none" />
                         <span style="line-height:40px;">{{ \Carbon\Carbon::parse($dataItem->created_at)->toDayDateTimeString() }}</span>
                         <form method="post" action="/data-items/{{ $dataItem->id }}" style="display:inline-block;">
-                            <input name="_method" type="hidden" value="DELETE">
+                            <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <button type="submit" class="btn btn-sm btn-outline-danger">
                                 <i class="fa fa-times"></i>

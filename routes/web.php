@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function() {
         Route::get('{type}', 'DataItemsController@index')->name('{type}.index');
         Route::get('{type}/create', 'DataItemsController@create')->name('{type}.create');
         Route::post('/', 'DataItemsController@store')->name('store');
-        Route::post('/{id}', 'DataItemsController@destory')->name('destroy');
+        Route::delete('/{id}', 'DataItemsController@destroy')->name('destroy');
 
 
         // Routes not implemented from Resource route

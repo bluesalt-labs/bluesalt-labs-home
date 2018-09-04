@@ -29,7 +29,7 @@ class DataItemsController extends Controller
         }
 
         if($typeID > 0) {
-            $type = DataItemType::find($typeID);
+            $type = DataItemType::findOrFail($typeID);
 
             return view('temp.data-item.'.$typeSlug.'.create')
                 ->with('user', $user)
@@ -70,10 +70,9 @@ class DataItemsController extends Controller
         //return back()->with('success', 'Data Item updated successfully.');
     }
 
-    public function destroy($type, $id) {
+    public function destroy($id) {
         $user = auth()->user();
-        $dataItem = DataItem::where('type_id', '=', $type)
-                        ->where('id', '=', $id)->findOrFail();
+        $dataItem = DataItem::findOrFail($id);
 
         if(intval($dataItem->user_id) === intval($user->id)) {
             $dataItem->delete();
