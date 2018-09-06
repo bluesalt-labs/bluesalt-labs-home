@@ -57,3 +57,27 @@
 .star-container .star-radio:not(:checked):not(:disabled) ~ .star-label:hover ~ .star-label { color: $star-color-hover; }
 .star-container .star-radio:not(:checked):not(:disabled) ~ .star-label:hover ~ .star-label:before,
 .star-container .star-radio:not(:checked):not(:disabled) ~ .star-label:hover:before { content: $star-close; }
+
+.task-entry-container {
+  position: relative;
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+  margin-bottom: 5px;
+
+  .task-description {
+    width: 90%;
+    padding: 6px 12px;
+  }
+
+  .task-timestamp {
+    font-size: 0.8em;
+    color: $text-muted;
+    padding: 3px 12px;
+  }
+  .task-delete-form {
+    max-width: 10%;
+    position: absolute;
+    top: 0.4em;
+    right: 0.4em;
+  }
+}
