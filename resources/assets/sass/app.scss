@@ -81,3 +81,22 @@
     right: 0.4em;
   }
 }
+
+
+@media(max-width: 768px) {
+
+  .star-container {
+    height: $star-font-size-sm;
+  }
+
+  .star-container .star-label,
+  .star-container .star-radio,
+  .star-container .star-label:before {
+    width: $star-font-size-sm;
+    height: $star-font-size-sm;
+  }
+
+  .star-container .star-label:before {
+    font-size: $star-font-size-sm;
+  }
+}

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@php $numStars = 10; @endphp
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -15,16 +16,10 @@
                         <span>Rating</span>
                         <div>
                             <div class="star-container">
-                                <input type="radio" id="radio-star-5" name="json_data[rating]" class="star-radio" value="5" />
-                                <label for="radio-star-5" class="star-label"></label>
-                                <input type="radio" id="radio-star-4" name="json_data[rating]" class="star-radio" value="4" />
-                                <label for="radio-star-4" class="star-label"></label>
-                                <input type="radio" id="radio-star-3" name="json_data[rating]" class="star-radio" value="3" />
-                                <label for="radio-star-3" class="star-label"></label>
-                                <input type="radio" id="radio-star-2" name="json_data[rating]" class="star-radio" value="2" />
-                                <label for="radio-star-2" class="star-label"></label>
-                                <input type="radio" id="radio-star-1" name="json_data[rating]" class="star-radio" value="1" />
-                                <label for="radio-star-1" class="star-label"></label>
+                                @for($i = $numStars; $i > 0; $i--)
+                                <input type="radio" id="radio-star-{{ $i }}" name="json_data[rating]" class="star-radio" value="{{ $i }}" />
+                                <label for="radio-star-{{ $i }}" class="star-label"></label>
+                                @endfor
                             </div>
                         </div>
 
@@ -61,7 +56,7 @@
                     @foreach($dataItems as $dataItem)
                     <div>
                         <div class="star-container">
-                            @for($i = 5; $i > 0; $i--)
+                            @for($i = $numStars; $i > 0; $i--)
                             <input
                                 type="radio"
                                 id="radio-star-{{ $dataItem->id }}-{{ $i }}"
@@ -108,7 +103,7 @@
                     scales: {
                         yAxes: [{
                             ticks: {
-                                max: 5,
+                                max: {{ $numStars }},
                                 min: 0,
                                 stepSize: 1
                             }
