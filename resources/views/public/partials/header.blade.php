@@ -1,4 +1,4 @@
-<div class="flex-center position-ref ">
+<div id="page-header" class="flex-center position-ref ">
     <div class="top-left links">
         <a href="{{ url('/') }}">Home</a>
         <a href="{{ url('/about') }}">About</a>

@@ -10,5 +10,10 @@
 
 @section('base-content')
     @include('public.partials.header')
+
+    <div id="page-content">
     @yield('content')
+    </div>
+
+    @include('public.partials.footer')
 @endsection
