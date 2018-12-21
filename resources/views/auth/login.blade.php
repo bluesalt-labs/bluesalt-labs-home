@@ -32,18 +32,7 @@
 @endpush
 
 @section('base-content')
-    <div class="flex-center position-ref ">
-        @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
-                    <a href="{{ url('/dashboard') }}">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-                    <a href="{{ route('register') }}">Register</a>
-                @endauth
-            </div>
-        @endif
-    </div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

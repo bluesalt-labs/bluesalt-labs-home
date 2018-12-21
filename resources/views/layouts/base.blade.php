@@ -19,6 +19,8 @@
     @stack('styles')
 </head>
 <body>
+<!-- Yes, I realize this code is a total mess. I'm trying to get the content -->
+<!-- in here as fast as possible so just bear with me... -->
 <div id="app">
     @yield('base-content')
 </div>

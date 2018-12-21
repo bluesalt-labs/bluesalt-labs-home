@@ -9,6 +9,6 @@
 @endpush
 
 @section('base-content')
-
+    @include('public.partials.header')
     @yield('content')
 @endsection
