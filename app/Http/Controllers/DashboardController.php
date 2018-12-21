@@ -21,10 +21,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        return view('dashboard.dashboard');
     }
 
     public function index_new() {
-        return view('dashboard-new');
+        return view('dashboard.dashboard-new');
     }
 }

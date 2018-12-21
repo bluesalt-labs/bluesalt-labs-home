@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('dashboard.layouts.app')
 
 @php $numStars = 10; @endphp
 @section('content')

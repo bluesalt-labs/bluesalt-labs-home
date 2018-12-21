@@ -38,11 +38,11 @@ Route::middleware('auth')->group(function() {
 
 
         // Routes not implemented from Resource route
-            /*
+        /*
 |        | PUT|PATCH | data-items/{type}/{{type}}           | data-items.{type}.update  | App\Http\Controllers\DataItemsController@update                        | web,auth     |
 |        | GET|HEAD  | data-items/{type}/{{type}}           | data-items.{type}.show    | App\Http\Controllers\DataItemsController@show                          | web,auth     |
 |        | GET|HEAD  | data-items/{type}/{{type}}/edit      | data-items.{type}.edit    | App\Http\Controllers\DataItemsController@edit                          | web,auth     |
-            */
+        */
     });
 
     Route::get('notes', 'VueRouterController@notes')->name('notes');

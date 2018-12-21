@@ -1,6 +1,67 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
-@section('content')
+@push('styles')
+    <!-- Styles -->
+    <style>
+
+        .full-height {
+            height: 100vh;
+        }
+
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .position-ref {
+            position: relative;
+        }
+
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 84px;
+        }
+
+        .links > a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+    </style>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@endpush
+
+@section('base-content')
+    <div class="flex-center position-ref ">
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                    <a href="{{ url('/dashboard') }}">Dashboard</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('register') }}">Register</a>
+                @endauth
+            </div>
+        @endif
+    </div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
