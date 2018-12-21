@@ -1,7 +1,7 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: luke
- * Date: 12/20/18
- * Time: 11:51 PM
- */
+@extends('public.layouts.public')
+
+@section('title', 'Home')
+
+@section('content')
+    <p>Migration in progress...please wait. </p>
+@endsection

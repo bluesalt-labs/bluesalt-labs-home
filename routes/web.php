@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::as('public.')->group(function() {
+   Route::get('/', 'PublicController@home')->name('home');
 });
 
 Auth::routes();

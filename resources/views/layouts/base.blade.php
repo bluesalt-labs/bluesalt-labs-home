@@ -8,15 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
+    <title>@yield('title') | {{ config('app.name', 'Laravel') }} </title>
 
     <!-- Scripts -->
-    @stack('scripts')
-
-    <!-- Fonts -->
-    {{-- todo: put these somewhere else --}}
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    @section('scripts')
+        <script src="{{ asset('js/base.js') }}" defer></script>
+    @endsection
 
     <!-- Styles -->
     @stack('styles')

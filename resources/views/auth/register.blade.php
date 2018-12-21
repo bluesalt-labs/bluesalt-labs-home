@@ -1,13 +1,7 @@
 @extends('layouts.base')
 
 @push('styles')
-    <!-- Styles -->
     <style>
-
-        .full-height {
-            height: 100vh;
-        }
-
         .flex-center {
             align-items: center;
             display: flex;
@@ -24,14 +18,6 @@
             top: 18px;
         }
 
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
         .links > a {
             color: #636b6f;
             padding: 0 25px;
@@ -41,12 +27,8 @@
             text-decoration: none;
             text-transform: uppercase;
         }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
     </style>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/public.css') }}" rel="stylesheet">
 @endpush
 
 @section('base-content')
@@ -61,7 +43,7 @@
                 @endauth
             </div>
         @endif
-        
+
     </div>
 <div class="container">
     <div class="row justify-content-center">
