@@ -3,17 +3,24 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: "Nunito", sans-serif;
+$font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
-// Font Awesome
-@import '~font-awesome/scss/font-awesome';
-
-// Highlight.js
-@import "~highlightjs/styles/androidstudio.css";
+// Sizes
+$page-header-height: 40px;
+$page-header-margin: 20px;
 
 // Colors
+$background-primary: #1E2431;
+/*$background-secondary: #2F4343;*/
+$background-secondary: #486261;
+$text-primary: #DCDEE4;
+
+$link-color: #b8c0d6;
+$link-color-active: #FFFFFF;
+$link-color-inactive: #80838e;
+
 $blue: #3490dc;
 $indigo: #6574cd;
 $purple: #9561e2;

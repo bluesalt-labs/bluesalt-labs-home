@@ -3,37 +3,47 @@
 @section('title', 'Home')
 
 @section('content')
-    <p>Migration in progress...please wait. </p>
 
-    <hr />
+    <div class="home-section" id="header-home-section">
+        <div class="home-section-content">
+            <img src="{{ asset('images/bluesalt-labs.png') }}" class="img-responsive" />
+            <h1>BlueSalt Labs</h1>
+            <p>
 
-    <div class="home-section">
-        <!-- todo: logo -->
-        <div class="center-section-title">
-            BlueSalt Labs
+            </p>
         </div>
     </div>
 
     <div class="home-section">
-        todo: about me blurb
+        <div class="home-section-content">
+            todo: about me blurb
+        </div>
     </div>
 
     <div class="home-section">
-        todo: Where else to find me (about link?)
+        <div class="home-section-content">
+            todo: Where else to find me (about link?)
+        </div>
     </div>
 
     <div class="home-section">
-        todo: highlighted projects?
+        <div class="home-section-content">
+            todo: highlighted projects?
+        </div>
     </div>
 
     <div class="home-section">
-        todo: recent blog posts
+        <div class="home-section-content">
+            todo: recent blog posts
+        </div>
     </div>
 
     <!-- todo: schedule/calendar availability? -->
 
     <div class="home-section">
-        todo: contact
+        <div class="home-section-content">
+            todo: contact
+        </div>
     </div>
 
 @endsection

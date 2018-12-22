@@ -14,7 +14,7 @@
 Route::as('public.')->group(function() {
    Route::get('/', 'PublicController@home')->name('home');
    Route::get('about', 'PublicController@about')->name('about');
-   Route::get('contact', 'PublicController@about')->name('contact');
+   Route::get('contact', 'PublicController@contact')->name('contact');
 
    Route::as('blog.')->prefix('blog')->group(function() {
        Route::get('/', 'PublicController@blogIndex')->name('home');
