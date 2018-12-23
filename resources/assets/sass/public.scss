@@ -8,14 +8,22 @@
 }
 
 html, body, #app {
+  position: relative;
+  top: 0; right: 0; bottom: 0; left: 0;
   margin: 0;
   padding: 0;
   font-family: $font-family;
   color: $text-primary;
+  background: $background-primary;
 }
 
-body {
-  background: $background-primary;
+nav,footer {
+  font-family: $font-family;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: left;
+  font-family: $font-family-mono;
 }
 
 #page-header-spacer {
@@ -60,7 +68,7 @@ nav#page-header {
 }
 
 #page-header > #page-header-content a.active {
-  border-bottom: 1px solid $text-primary;
+  border-bottom: 1px solid $background-secondary;
 }
 
 #page-header > #page-header-content > .header-left {
@@ -72,16 +80,14 @@ nav#page-header {
   align-content: flex-end;
 }
 
-#page-content {
-  overflow: hidden;
-}
-
-.home-section {
+.home-section,
+.page-section {
   width: 100%;
   min-height: 30vh;
 }
 
-.home-section > .home-section-content {
+.home-section > .home-section-content,
+.page-section > .page-section-content {
   max-width: 1600px;
   margin: auto;
   padding: 30px 45px;
@@ -105,26 +111,33 @@ nav#page-header {
       text-align: center;
     }
   }
-
 }
 
-.home-section:nth-child(even) {
+.page-section:nth-child(1) {
+  padding-top: 30px;
+}
+
+.home-section:nth-child(even),
+.page-section:nth-child(even) {
+  -webkit-box-shadow: 0px -12px 10px -14px $background-primary-dark, 0px 12px 12px -12px $background-primary-dark;
+  -moz-box-shadow: 0px -12px 10px -14px $background-primary-dark, 0px 12px 12px -12px $background-primary-dark;
+  box-shadow: 0px -12px 10px -14px $background-primary-dark, 0px 12px 12px -12px $background-primary-dark;
+}
+
+
+.home-section:nth-child(even),
+.page-section:nth-child(even) {
   background: rgba(#ffffff, .15);
-  -webkit-box-shadow: inset 0px -12px 12px -10px $background-primary, inset 0px 12px 12px -10px $background-primary;
-  -moz-box-shadow: inset 0px -12px 12px -10px $background-primary, inset 0px 12px 12px -10px $background-primary;
-  box-shadow: inset 0px -12px 12px -10px $background-primary, inset 0px 12px 12px -10px $background-primary;
-
 }
+
+//.page-section:nth-child(even) {
+//  background: rgba($background-secondary, .5);
+//}
 
 
 /********* Imported from old site. Redo this *********/
 
 
-
-nav,footer,
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family;
-}
 
 
 nav ul, footer ul {

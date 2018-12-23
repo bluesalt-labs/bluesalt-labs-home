@@ -1,4 +1,3 @@
-<div id="page-header-spacer"></div>
 <nav id="page-header">
     <div id="page-header-content">
         <div class="header-left">

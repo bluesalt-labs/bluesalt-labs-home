@@ -8,12 +8,24 @@
     <link href="{{ asset('css/public.css') }}" rel="stylesheet">
 @endpush
 
-@section('base-content')
+@section('base-header')
+    @hasSection('above-header')
+        @yield('above-header')
+    @else
+        <div id="page-header-spacer"></div>
+    @endif
+
     @include('public.partials.header')
+@endsection
+
+@section('base-content')
 
     <div id="page-content">
     @yield('content')
     </div>
 
+@endsection
+
+@section('base-footer')
     @include('public.partials.footer')
 @endsection

@@ -2,17 +2,16 @@
 
 @section('title', 'Home')
 
-@section('content')
-
+@section('above-header')
     <div class="home-section" id="header-home-section">
         <div class="home-section-content">
             <img src="{{ asset('images/bluesalt-labs.png') }}" class="img-responsive" />
             <h1>BlueSalt Labs</h1>
-            <p>
-
-            </p>
         </div>
     </div>
+@endsection
+
+@section('content')
 
     <div class="home-section">
         <div class="home-section-content">
